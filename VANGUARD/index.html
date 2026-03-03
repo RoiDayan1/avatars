@@ -56,20 +56,48 @@
 <body>
 <h1>VANGUARD</h1>
 <p class="subtitle">100 Superhero Avatars</p>
-<div class="download"><a href="https://github.com/RoiDayan1/avatars/archive/refs/heads/main.zip">Download All (ZIP)</a></div>
-<div class="grid">
+<div class="download"><a href="#" id="downloadBtn">Download All (ZIP)</a></div>
+<div class="grid" id="grid"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script>
+  const grid = document.getElementById('grid');
   for (let i = 1; i <= 100; i++) {
     const num = String(i).padStart(3, '0');
     const gender = i % 2 === 1 ? 'M' : 'F';
-    document.write(`
-      <div class="card">
-        <img src="image_${num}.png" alt="Character ${i}" loading="lazy">
-        <div class="label">#${i} (${gender})</div>
-      </div>
-    `);
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <img src="image_${num}.png" alt="Character ${i}" loading="lazy">
+      <div class="label">#${i} (${gender})</div>`;
+    grid.appendChild(card);
   }
+
+  document.getElementById('downloadBtn').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const btn = e.target;
+    const orig = btn.textContent;
+    btn.textContent = 'Downloading 0/100...';
+    btn.style.pointerEvents = 'none';
+
+    const zip = new JSZip();
+    for (let i = 1; i <= 100; i++) {
+      const num = String(i).padStart(3, '0');
+      const resp = await fetch(`image_${num}.png`);
+      zip.file(`image_${num}.png`, await resp.blob());
+      btn.textContent = `Downloading ${i}/100...`;
+    }
+
+    btn.textContent = 'Building ZIP...';
+    const blob = await zip.generateAsync({ type: 'blob' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'VANGUARD.zip';
+    a.click();
+    URL.revokeObjectURL(a.href);
+
+    btn.textContent = orig;
+    btn.style.pointerEvents = '';
+  });
 </script>
-</div>
 </body>
 </html>
