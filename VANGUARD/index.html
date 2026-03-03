@@ -67,7 +67,9 @@
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-      <img src="image_${num}.png" alt="Character ${i}" loading="lazy">
+      <a href="image_${num}.png" target="_blank">
+        <img src="image_${num}.png" alt="Character ${i}" loading="lazy">
+      </a>
       <div class="label">#${i} (${gender})</div>`;
     grid.appendChild(card);
   }
