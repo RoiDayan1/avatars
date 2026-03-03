@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VANGUARD - 100 Superhero Avatars</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; color: #eee; font-family: system-ui, sans-serif; padding: 2rem; }
+  h1 { text-align: center; font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: 0.1em; }
+  p.subtitle { text-align: center; color: #888; margin-bottom: 2rem; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1a1a1a;
+    transition: transform 0.2s;
+  }
+  .card:hover { transform: scale(1.03); }
+  .card img {
+    width: 100%;
+    display: block;
+  }
+  .card .label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.4rem;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    font-size: 0.8rem;
+    color: #ccc;
+  }
+</style>
+</head>
+<body>
+<h1>VANGUARD</h1>
+<p class="subtitle">100 Superhero Avatars</p>
+<div class="grid">
+<script>
+  for (let i = 1; i <= 100; i++) {
+    const num = String(i).padStart(3, '0');
+    const gender = i % 2 === 1 ? 'M' : 'F';
+    document.write(`
+      <div class="card">
+        <img src="image_${num}.png" alt="Character ${i}" loading="lazy">
+        <div class="label">#${i} (${gender})</div>
+      </div>
+    `);
+  }
+</script>
+</div>
+</body>
+</html>
