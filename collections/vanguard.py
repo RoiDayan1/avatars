@@ -1,3 +1,39 @@
+"""VANGUARD — 100 Superhero Avatars
+
+Diverse superhero character portraits with unique powers, costumes, and weapons.
+"""
+
+NAME = "VANGUARD"
+SUBTITLE = "100 Superhero Avatars"
+
+PROMPT_TEMPLATE = """\
+A stylized semi-realistic portrait illustration of a superhero character in a square (1:1) format.
+
+CHARACTER IDENTITY:
+{character}
+
+COMPOSITION:
+- Square (1:1), chest-up portrait, high resolution
+- Centered with slight dynamic pose allowed
+- Character fills frame naturally, extends to bottom edge
+
+ART STYLE (CONSISTENT ACROSS ALL):
+- Semi-realistic digital illustration with high detail
+- Realistic proportions, skin textures, and facial features
+- Subtle painterly touches — soft brush strokes on background only
+- Clean rendering with natural skin tones and believable lighting
+- Closer to concept art realism than cartoon or stylized
+
+LIGHTING:
+- Soft diffused lighting with optional colored accent lighting matching the character theme
+
+BACKGROUND:
+- Abstract full-bleed background that complements the character's theme and colors
+
+QUALITY:
+- High detail, clean rendering
+- No text, no logos, no borders, no watermarks"""
+
 # 50 Male characters (odd indices: 1, 3, 5, ... 99)
 # 50 Female characters (even indices: 2, 4, 6, ... 100)
 

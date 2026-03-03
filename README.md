@@ -1,23 +1,28 @@
-# VANGUARD
+# Avatar Collections
 
-Generate 100 unique superhero portrait avatars using Google's Gemini image generation API.
+Generate collections of unique portrait avatars using Google's Gemini image generation API. Each collection has its own style prompt and 100 diverse character descriptions (50 male, 50 female).
+
+## Collections
+
+### VANGUARD — 100 Superhero Avatars
+Semi-realistic superhero character portraits with unique powers, costumes, and weapons. Characters range from cosmic elders and asteroid miners to living paintings and probability surfers.
 
 **[Browse the gallery](https://roidayan1.github.io/avatars/VANGUARD/)**
 
-## Overview
+### DiverseFaces — 100 Diverse Portrait Avatars
+Stylized painterly portraits of globally-inspired individuals. Rich variation in ethnicity, cultural clothing, accessories, and expressions — professional LinkedIn-style framing with vibrant abstract backgrounds.
 
-This project creates a diverse set of 100 superhero character portraits (50 male, 50 female) with detailed character descriptions covering a wide range of ethnicities, powers, and visual styles. Each character has a unique identity including age, ethnicity, costume, weapon, color palette, expression, and superpower.
-
-Characters are interleaved by gender (odd indices = male, even indices = female) and range from cosmic elders and asteroid miners to living paintings and probability surfers.
+**[Browse the gallery](https://roidayan1.github.io/avatars/DiverseFaces/)**
 
 ## Project Structure
 
 ```
-characters.py          # Character descriptions (MALES and FEMALES lists)
-generate-images.py     # Image generation script using Gemini API
-VANGUARD/              # Generated PNG portraits + gallery page
-  index.html           # Web gallery with download ZIP button
-  image_001–100.png    # Avatar images
+collections/           # One .py file per collection (prompt + characters)
+  vanguard.py
+  diversefaces.py
+generate-images.py     # Image generation script
+VANGUARD/              # Generated: images + gallery page
+DiverseFaces/          # Generated: images + gallery page
 ```
 
 ## Usage
@@ -26,14 +31,26 @@ VANGUARD/              # Generated PNG portraits + gallery page
    ```
    GEMINI_API_KEY=your_key_here
    ```
-2. Run the generator:
+
+2. Generate a collection:
    ```bash
-   python generate-images.py
+   python3 generate-images.py --collection vanguard
+   python3 generate-images.py --collection diversefaces
    ```
 
-Images are saved as `VANGUARD/image_001.png` through `image_100.png`.
+3. Regenerate specific images:
+   ```bash
+   python3 generate-images.py --collection vanguard --regenerate 1 5 42
+   ```
 
-To regenerate specific images, set the `REGENERATE` list in `generate-images.py` to the desired indices.
+4. Regenerate only the gallery HTML:
+   ```bash
+   python3 generate-images.py --collection vanguard --gallery-only
+   ```
+
+## Adding a New Collection
+
+Create `collections/<name>.py` with: `NAME`, `SUBTITLE`, `PROMPT_TEMPLATE`, `MALES` (50), and `FEMALES` (50). Then run the generator. Gallery pages auto-discover all collections and cross-link between them. See [CLAUDE.md](CLAUDE.md) for the full specification.
 
 ## Requirements
 
