@@ -1,6 +1,8 @@
-# avatars
+# VANGUARD
 
 Generate 100 unique superhero portrait avatars using Google's Gemini image generation API.
+
+**[Browse the gallery](https://roidayan1.github.io/avatars/VANGUARD/)**
 
 ## Overview
 
@@ -13,19 +15,23 @@ Characters are interleaved by gender (odd indices = male, even indices = female)
 ```
 characters.py          # Character descriptions (MALES and FEMALES lists)
 generate-images.py     # Image generation script using Gemini API
-generated_images/      # Output directory with generated PNG portraits
+VANGUARD/              # Generated PNG portraits + gallery page
+  index.html           # Web gallery with download ZIP button
+  image_001–100.png    # Avatar images
 ```
 
 ## Usage
 
-1. Set your Gemini API key in `generate-images.py`
+1. Set your Gemini API key in `.env`:
+   ```
+   GEMINI_API_KEY=your_key_here
+   ```
 2. Run the generator:
+   ```bash
+   python generate-images.py
+   ```
 
-```bash
-python generate-images.py
-```
-
-Images are saved as `generated_images/image_001.png` through `image_100.png`.
+Images are saved as `VANGUARD/image_001.png` through `image_100.png`.
 
 To regenerate specific images, set the `REGENERATE` list in `generate-images.py` to the desired indices.
 
