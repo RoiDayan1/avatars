@@ -8,7 +8,19 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #0a0a0a; color: #eee; font-family: system-ui, sans-serif; padding: 2rem; }
   h1 { text-align: center; font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: 0.1em; }
-  p.subtitle { text-align: center; color: #888; margin-bottom: 2rem; }
+  p.subtitle { text-align: center; color: #888; margin-bottom: 1rem; }
+  .download { text-align: center; margin-bottom: 2rem; }
+  .download a {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background: #2a2a2a;
+    color: #eee;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .download a:hover { background: #3a3a3a; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -44,6 +56,7 @@
 <body>
 <h1>VANGUARD</h1>
 <p class="subtitle">100 Superhero Avatars</p>
+<div class="download"><a href="https://github.com/RoiDayan1/avatars/archive/refs/heads/main.zip">Download All (ZIP)</a></div>
 <div class="grid">
 <script>
   for (let i = 1; i <= 100; i++) {
